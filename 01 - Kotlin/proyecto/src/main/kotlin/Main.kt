@@ -73,6 +73,68 @@ fun main(){
     val sumaUno = Suma(1,1)
     val sumaDos = Suma(null, 1)
     val sumaTres = Suma(1, null)
+    val sumaCuatro = Suma(null, null)
+    sumaUno.sumar()
+    sumaDos.sumar()
+    sumaTres.sumar()
+    sumaCuatro.sumar()
+    println(Suma.pi)
+    println(Suma.elevarAlCuadrado(2))
+    println(Suma.historialSumas)
+
+
+
+    // ARREGLOS
+
+    // Tipos de Arreglos
+
+    // Arreglo Estatico
+    val arregloEstatico: Array<Int> = arrayOf<Int>(1, 2, 3)
+    println(arregloEstatico)
+
+    // Arreglo Dinámicos
+    val arregloDinamico: ArrayList<Int> = arrayListOf<Int>(
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    )
+    println(arregloDinamico)
+    arregloDinamico.add(11)
+    arregloDinamico.add(12)
+    println(arregloDinamico)
+
+
+
+
+
+    // FOR EACH -> Unit
+    // Iterar un arreglo
+    val respuestaForEach: Unit = arregloDinamico
+        .forEach { valorActual: Int ->
+            println("Valor actual: ${valorActual}")
+        }
+    // it (en ingles eso) significa el elemento iterado
+    arregloDinamico.forEach { println(it) }
+
+    arregloEstatico
+        .forEachIndexed { indice: Int, valorActual: Int ->
+            println("Valor ${valorActual} Indice: ${indice}")
+        }
+    println(respuestaForEach)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -130,7 +192,7 @@ abstract class Numeros( // Constructor PRIMARIO
 
 class Suma( // Constructor Primario Suma
     uno: Int, // Parametro
-    dos: Int // Parametro
+    dos: Int, // Parametro
 ) : Numeros(uno, dos) { // <- Constructor del Padre
     init { // Bloque constructor primario
         this.numeroUno; numeroUno;
@@ -154,6 +216,38 @@ class Suma( // Constructor Primario Suma
         uno,
         if (dos == null) 0 else uno
     ) // Si no lo necesitamos al bloque de codigo "{}" lo omitimos
+
+    constructor(//  cuarto constructor
+        uno: Int?, // parametros
+        dos: Int? // parametros
+    ) : this(  // llamada constructor primario
+        if (uno == null) 0 else uno,
+        if (dos == null) 0 else uno
+    )
+    // public por defecto, o usar private o protected
+    public fun sumar(): Int {
+        val total = numeroUno + numeroDos
+        // Suma.agregarHistorial(total)
+        agregarHistorial(total)
+        return total
+    }
+
+
+
+
+
+    companion object {
+        // Atributos y Metodos "Compartidos"
+        // entre las instancias
+        val pi = 3.14
+        fun elevarAlCuadrado(num: Int): Int {
+            return num * num
+        }
+        val historialSumas = arrayListOf<Int>()
+        fun agregarHistorial(valorNuevaSuma:Int){
+            historialSumas.add(valorNuevaSuma)
+        }
+    }
 }
 
 
