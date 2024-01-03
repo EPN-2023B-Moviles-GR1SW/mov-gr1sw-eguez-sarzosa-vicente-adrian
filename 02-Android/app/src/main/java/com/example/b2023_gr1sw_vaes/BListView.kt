@@ -80,15 +80,7 @@ class BListView : AppCompatActivity() {
         dialogo.show()
     }
 
-    fun mostrarSnackbar(texto:String){
-        Snackbar
-            .make(
-                findViewById(R.id.lv_list_view), // view
-                texto, // texto
-                Snackbar.LENGTH_LONG // tiempo
-            )
-            .show()
-    }
+
 
 
 
