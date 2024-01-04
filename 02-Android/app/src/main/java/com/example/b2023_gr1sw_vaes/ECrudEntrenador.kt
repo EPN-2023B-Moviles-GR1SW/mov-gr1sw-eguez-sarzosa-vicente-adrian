@@ -26,9 +26,13 @@ class ECrudEntrenador : AppCompatActivity() {
                         id.text.toString().toInt()
                     )
                 // Setear los valores en los comp visuales
+                if(entrenador.id == 0){
+                    mostrarSnackbar("Usu. no encontrado")
+                }
                 id.setText(entrenador.id.toString())
                 nombre.setText(entrenador.nombre)
                 descripcion.setText(entrenador.descripcion)
+                mostrarSnackbar("Usu. encontrado")
             }
 
         val botonCrearBDD = findViewById<Button>(R.id.btn_crear_bdd)
@@ -62,7 +66,7 @@ class ECrudEntrenador : AppCompatActivity() {
             val respuesta = EBaseDeDatos.tablaEntrenador!!.eliminarEntrenadorFormulario(
                 id.text.toString().toInt()
             )
-            if (respuesta) mostrarSnackbar("Usu. Actualizado")
+            if (respuesta) mostrarSnackbar("Usu. Eliminado")
         }
     }// Fin OnCreate
     fun mostrarSnackbar(texto: String) {

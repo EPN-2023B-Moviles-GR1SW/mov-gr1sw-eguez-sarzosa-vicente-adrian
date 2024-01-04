@@ -133,6 +133,12 @@ class BListView : AppCompatActivity() {
 
 
 
+    fun mostrarSnackbar(texto:String){
+        val snack = Snackbar.make(findViewById(R.id.lv_list_view),
+            texto, Snackbar.LENGTH_LONG)
+        snack.show()
+    }
+
 
 
 
