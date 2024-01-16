@@ -111,6 +111,14 @@ class MainActivity : AppCompatActivity() {
             }
 
 
+
+        val botonGoogleMaps = findViewById<Button>(R.id.btn_google_maps)
+        botonGoogleMaps
+            .setOnClickListener {
+                irActividad(GGoogleMapsActivity::class.java)
+            }
+
+
     } // Termina onCreate
     fun abrirActividadConParametros(
         clase: Class<*>
